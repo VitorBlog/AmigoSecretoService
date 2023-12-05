@@ -30,7 +30,7 @@ public class User {
     private User secretFriend;
 
     @ManyToOne
-    private Group group;
+    private Group familyGroup;
 
     @ManyToMany(fetch = FetchType.EAGER)
     private List<Gift> giftList;
