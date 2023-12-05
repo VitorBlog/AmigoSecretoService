@@ -24,7 +24,7 @@ public class GiftController {
     }
 
     @GetMapping("/{id}/view")
-    public GetGiftResponse getGift(@PathVariable Long id, @AuthenticationPrincipal User user) {
+    public GetGiftResponse getGift(@PathVariable String id, @AuthenticationPrincipal User user) {
         return giftService.getGift(id, user);
     }
 
