@@ -44,7 +44,7 @@ public class GroupService {
 
     public Group sortUsers(Long id) {
         final var group = findGroup(id);
-        final var users = userRepository.findByGroup(group);
+        final var users = userRepository.findByFamilyGroup(group);
         final var list = new ArrayList<>(users);
 
         for (User user : users) {
@@ -66,7 +66,7 @@ public class GroupService {
 
     public String verifySort(Long id) throws UnsupportedEncodingException, NoSuchAlgorithmException {
         final var group = findGroup(id);
-        final var users = userRepository.findByGroup(group);
+        final var users = userRepository.findByFamilyGroup(group);
         StringBuilder label = new StringBuilder(group.getName() + "\n\n");
 
         for (User user : users) {
