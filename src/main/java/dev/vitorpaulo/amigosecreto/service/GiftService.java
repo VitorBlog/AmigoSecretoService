@@ -35,7 +35,12 @@ public class GiftService {
     }
 
     public GetGiftResponse getGift(Long id, User user) {
-        return mapGift(giftRepository.findById(id).orElseThrow());
+        return user.getGiftList()
+                .stream()
+                .filter(value -> value.getId().equals(id))
+                .map(GiftService::mapGift)
+                .findFirst()
+                .orElseThrow();
     }
 
     public GetGiftResponse updateGift(CreateGiftRequest request, User user) {
