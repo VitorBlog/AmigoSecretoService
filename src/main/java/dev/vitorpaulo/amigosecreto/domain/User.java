@@ -7,10 +7,10 @@ import java.util.List;
 
 @Setter
 @Getter
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+@Entity(name = "member")
 public class User {
 
     @Id
