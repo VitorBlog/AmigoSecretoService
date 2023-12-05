@@ -34,10 +34,10 @@ public class GiftService {
         return mapGift(gift);
     }
 
-    public GetGiftResponse getGift(String id, User user) {
+    public GetGiftResponse getGift(Long id, User user) {
         return user.getGiftList()
                 .stream()
-                .filter(value -> value.getId().toString().equals(id))
+                .filter(value -> value.getId().equals(id))
                 .map(GiftService::mapGift)
                 .findFirst()
                 .orElseThrow();

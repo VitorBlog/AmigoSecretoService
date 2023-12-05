@@ -23,8 +23,8 @@ public class GiftController {
         return giftService.createGift(request, user);
     }
 
-    @GetMapping("/{id}/view")
-    public GetGiftResponse getGift(@PathVariable String id, @AuthenticationPrincipal User user) {
+    @GetMapping("/{id}")
+    public GetGiftResponse getGift(@PathVariable Long id, @AuthenticationPrincipal User user) {
         return giftService.getGift(id, user);
     }
 
