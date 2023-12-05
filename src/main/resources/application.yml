@@ -1,0 +1,35 @@
+server:
+    compression:
+        enabled: true
+        mime-types: application/json
+        min-response-size: 1024
+    error:
+        include-message: always
+    servlet:
+        context-path: /api
+    port: 2512
+
+spring:
+    application:
+        name: amigo-secreto
+    datasource:
+        password: ${DATASOURCE_PASSWORD:root}
+        url: jdbc:mysql://${DATASOURCE_HOST:localhost}:${DATASOURCE_PORT:3306}/${DATASOURCE_DATABASE:amigo-secreto}
+        username: ${DATASOURCE_USERNAME:root}
+    jackson:
+        time-zone: America/Sao_Paulo
+    jpa:
+        hibernate:
+            ddl-auto: update
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.MySQLDialect
+        show-sql: ${SHOW_SQL:true}
+    mvc:
+        pathmatch:
+            matching-strategy: ANT_PATH_MATCHER
+
+springdoc:
+    swagger-ui:
+        enabled: ${ENABLE_SWAGGER:true}
+        path: /docs
