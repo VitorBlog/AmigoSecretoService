@@ -36,7 +36,7 @@ public class GroupService {
         final var group = findGroup(id);
         final var user = userRepository.findById(userId).orElseThrow();
 
-        user.setGroup(group);
+        user.setFamilyGroup(group);
         userRepository.save(user);
 
         return group;

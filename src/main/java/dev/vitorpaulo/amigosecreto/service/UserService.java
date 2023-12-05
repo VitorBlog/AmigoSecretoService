@@ -19,7 +19,7 @@ public class UserService {
     private final UserRepository userRepository;
 
     public UserHomeResponse viewHome(User user) {
-        final var isSorted = user.getGroup() != null && user.getGroup().getSorted();
+        final var isSorted = user.getFamilyGroup() != null && user.getFamilyGroup().getSorted();
 
         return UserHomeResponse.builder()
                 .sorted(isSorted)
