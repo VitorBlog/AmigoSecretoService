@@ -20,13 +20,13 @@ import java.util.Date;
 @RequiredArgsConstructor
 public class AuthService {
 
-    @Value("${jwt.expiration:2592000000}")
-    private Long jwtExpiration;
-
     private final JwtBuilder jwtBuilder;
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    @Value("${jwt.expiration:2592000000}")
+    private Long jwtExpiration;
 
     public AuthenticateUserResponse register(AuthenticateUserRequest request) throws UserAlreadyExistsException {
         if (userRepository.existsByEmailIgnoreCase(request.getEmail())) {

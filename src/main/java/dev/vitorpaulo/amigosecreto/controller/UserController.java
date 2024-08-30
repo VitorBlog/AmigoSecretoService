@@ -15,13 +15,8 @@ public class UserController {
 
     private final UserService userService;
 
-    @GetMapping("/home")
+    @GetMapping
     public UserHomeResponse getHome(@AuthenticationPrincipal User user) {
         return userService.viewHome(user);
-    }
-
-    @PutMapping("/seen")
-    public UserHomeResponse updateSeen(@AuthenticationPrincipal User user) {
-        return userService.updateSeen(user);
     }
 }
