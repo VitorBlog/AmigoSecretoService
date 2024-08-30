@@ -72,8 +72,7 @@ public class AuthenticationTokenFilter extends OncePerRequestFilter {
             }
         } catch (Exception exception) {
             response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), exception.getMessage());
-            log.error("Unable to authenticate the request. {}", exception.getMessage());
-            exception.printStackTrace();
+            log.error("Unable to authenticate the request. {}", exception);
         }
 
         response.setStatus(HttpStatus.UNAUTHORIZED.value());

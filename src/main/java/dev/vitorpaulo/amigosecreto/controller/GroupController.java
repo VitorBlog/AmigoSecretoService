@@ -5,9 +5,6 @@ import dev.vitorpaulo.amigosecreto.service.GroupService;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-
 @RestController
 @AllArgsConstructor
 @RequestMapping("/group/v1")
@@ -23,10 +20,5 @@ public class GroupController {
     @PostMapping("/{id}/sort")
     public Group sortUsers(@PathVariable Long id) {
         return groupService.sortUsers(id);
-    }
-
-    @PostMapping("/{id}/verify")
-    public String verifySort(@PathVariable Long id) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        return groupService.verifySort(id);
     }
 }

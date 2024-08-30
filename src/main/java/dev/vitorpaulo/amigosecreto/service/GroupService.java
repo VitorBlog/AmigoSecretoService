@@ -64,37 +64,6 @@ public class GroupService {
         return group;
     }
 
-    public String verifySort(Long id) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-        final var group = findGroup(id);
-        final var users = userRepository.findByFamilyGroup(group);
-        StringBuilder label = new StringBuilder(group.getName() + "\n\n");
-
-        for (User user : users) {
-            final var bestFriends = Objects.equals(user.getId(), user.getSecretFriend().getSecretFriend().getId());
-
-            label.append(md5hex(user.getName()))
-                    .append(" (").append(user.getGiftList().size()).append(")")
-                    .append(bestFriends? " <-> " : " -> ")
-                    .append(md5hex(user.getSecretFriend().getName()))
-                    .append(" (").append(user.getSecretFriend().getGiftList().size()).append(") ")
-                    .append("\n\n");
-        }
-
-        return label.toString();
-    }
-
-    private String md5hex(String name) throws NoSuchAlgorithmException {
-        final var messageDigest = MessageDigest.getInstance("MD5");
-        messageDigest.update(name.getBytes());
-
-        final var stringBuilder = new StringBuilder();
-        for (var value : messageDigest.digest()) {
-            stringBuilder.append(Integer.toHexString(value & 0xff));
-        }
-
-        return stringBuilder.toString();
-    }
-
     private Group findGroup(Long id) {
         return groupRepository.findById(id).orElseThrow();
     }

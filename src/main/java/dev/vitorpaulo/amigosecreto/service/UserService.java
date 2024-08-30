@@ -31,13 +31,6 @@ public class UserService {
                 .build();
     }
 
-    public UserHomeResponse updateSeen(User user) {
-        user.setSeenFriend(true);
-        userRepository.save(user);
-
-        return viewHome(user);
-    }
-
     public User findUserById(Long id) throws UserNotFoundException {
         return userRepository.findById(id)
                 .orElseThrow(UserNotFoundException::new);
